@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Fill This in" />
+    <title>Fill This in</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body style="background-color: rgb(0, 0, 42)">
+    <h1 style="color: beige; font-size: 5rem;" class="text-center mt-lg-5">validting form</h1>
+    <h3 style="color:beige" class="text-center mt-3">input some info and see if they are valid</h3>
+    <div style="background-color: beige;" class="border border-3 border-warning col-7 h-25 d-block mx-auto">
+        <label for="name-input" style="color: black; font-size: 1.5rem" class="col-6 d-block mx-auto mt-3 mb-1">a name</label>
+        <input id="name-input" placeholder="like Alex" class="form-control w-50 mx-auto border border-primary border-2 p-2"  />
+        <label for="number-input" style="color: black; font-size: 1.5rem" class="col-6 d-block mx-auto mt-3 mb-1">a set of numbers</label>
+        <input id="number-input" placeholder="like 1259522000" class="form-control w-50 mx-auto border border-primary border-2 p-2"  />
+        <label for="email-input" style="color: black; font-size: 1.5rem" class="col-6 d-block mx-auto mt-3 mb-1">a set of numbers</label>
+        <input id="email-input" placeholder="like email@email.com" class="form-control w-50 mx-auto border border-primary border-2 p-2"  />
+        <button id="submit" class="d-block mx-auto col-3 mt-4 mb-4 btn btn-outline-success">check</button>
+    </div>
+    <script src="jquery.min.js"></script>
+    <script>
+      $("document").ready(function() {
+        let isMatchName;
+        let isMatchNumber;
+        let isMatchEmail;
+
+        $("#name-input").on("input", function() {
+          const matchRegex = $("#name-input").val().match(/[^a-z\s]/i);
+          isMatchName = matchRegex ? true : false;
+          if (isMatchName) {
+            $("#name-input").removeClass("border-primary");
+            $("#name-input").removeClass("border-success");
+            $("#name-input").addClass("border-danger");
+            $(this).css({
+                    "box-shadow": "0 0 0 0.25rem rgba(255, 0, 0, 0.25)"
+                })
+          }
+          else {
+            $("#name-input").removeClass("border-primary");
+            $("#name-input").removeClass("border-danger");
+            $("#name-input").addClass("border-success");
+            $(this).css({
+                    "box-shadow": "0 0 0 0.25rem rgba(0, 255, 0, 0.25)"
+                })
+          }
+        })
+        $("#name-input").on("blur", function() {
+            $(this).css("box-shadow", "")
+        })
+
+
+        $("#number-input").on("input", function() {
+          const matchRegex = $("#number-input").val().match(/[^0-9\s]/);
+          isMatchNumber = matchRegex ? true : false;
+          if (isMatchNumber) {
+            $("#number-input").removeClass("border-primary");
+            $("#number-input").removeClass("border-success");
+            $("#number-input").addClass("border-danger");
+            $(this).css({
+                    "box-shadow": "0 0 0 0.25rem rgba(255, 0, 0, 0.25)"
+                })
+          }
+          else {
+            $("#number-input").removeClass("border-primary");
+            $("#number-input").removeClass("border-danger");
+            $("#number-input").addClass("border-success");
+            $(this).css({
+                    "box-shadow": "0 0 0 0.25rem rgba(0, 255, 0, 0.25)"
+                })
+          }
+        })
+        $("#number-input").on("blur", function() {
+            $(this).css("box-shadow", "")
+        })
+
+
+        $("#email-input").on("input", function() {
+          const matchRegex = $("#email-input").val().match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
+          isMatchEmail = matchRegex ? false : true;
+          if (isMatchEmail) {
+            $("#email-input").removeClass("border-primary");
+            $("#email-input").removeClass("border-success");
+            $("#email-input").addClass("border-danger");
+            $(this).css({
+                    "box-shadow": "0 0 0 0.25rem rgba(255, 0, 0, 0.25)"
+                })
+          }
+          else {
+            $("#email-input").removeClass("border-primary");
+            $("#email-input").removeClass("border-danger");
+            $("#email-input").addClass("border-success");
+            $(this).css({
+                    "box-shadow": "0 0 0 0.25rem rgba(0, 255, 0, 0.25)"
+                })
+          }
+        })
+        $("#email-input").on("blur", function() {
+            $(this).css("box-shadow", "")
+        })
+
+        $("#submit").on("click", function() {
+            alert("this button is useless :)")
+        })
+      })
+   </script>
+  </body>
+  </html>
